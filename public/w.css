@@ -1,0 +1,13 @@
+.rc-box{border:1px solid rgba(127,127,127,.35);border-radius:12px;padding:18px;margin:24px 0;max-width:560px;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:inherit;background:transparent}
+.rc-h{font-weight:700;font-size:18px;margin:0 0 10px}
+.rc-f{display:block;margin:0 0 10px}
+.rc-l{display:block;font-size:13px;opacity:.8;margin-bottom:3px}
+.rc-f input,.rc-f select,.rc-f textarea{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid rgba(127,127,127,.45);border-radius:8px;font:inherit;color:inherit;background:transparent}
+.rc-f select option{color:#111}
+.rc-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.rc-c{font-size:12.5px;opacity:.8;margin:6px 0 10px}
+.rc-c a{color:inherit}
+.rc-b{padding:10px 16px;border:0;border-radius:8px;font:600 15px system-ui,sans-serif;cursor:pointer;background:#a6ff1a;color:#081000}
+.rc-b[disabled]{opacity:.6;cursor:wait}
+.rc-m{color:#e5484d;font-size:14px;margin:8px 0 0}
+.rc-ok{font-weight:600;margin:0}

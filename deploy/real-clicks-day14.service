@@ -1,0 +1,12 @@
+[Unit]
+Description=real.clicks day-14 gate check (board kill gates)
+
+[Service]
+Type=oneshot
+User=anthony
+Group=anthony
+WorkingDirectory=/home/anthony/www/real-clicks-app
+EnvironmentFile=/home/anthony/.local/share/real-clicks/app.env
+Environment=REAL_CLICKS_DB=/home/anthony/.local/share/real-clicks/real-clicks.db
+Environment=HOME=/home/anthony
+ExecStart=/home/anthony/.local/share/mise/installs/node/24/bin/node scripts/day14.mjs
