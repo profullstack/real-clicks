@@ -28,7 +28,7 @@ export const API_DOCS = {
     'POST /api/v1/vendors': '{name, email, niche, website} vendor sign-up -> {vendor_id, topup_url}',
     'GET /topup/:vendor_id?amount=250': 'CoinPay checkout for a prepaid lead balance ($50 per verified lead)',
   },
-  admin: 'Authorization: Bearer <REAL_CLICKS_ADMIN_KEY>: GET /api/v1/stats, /api/v1/gates, /api/v1/leads, /api/v1/vendors; POST /api/v1/leads/:id/refund {reason}; POST /api/v1/vendors/:id {fields}; POST /api/v1/hours {hours, note}; POST /mcp (JSON-RPC MCP).',
+  admin: 'Authorization: Bearer <REAL_CLICKS_ADMIN_KEY>: GET /api/v1/stats, /api/v1/gates, /api/v1/leads, /api/v1/vendors; POST /api/v1/leads/:id/refund {reason}; POST /api/v1/leads/:id/approve {note} (deliver a held lead after a manual check); POST /api/v1/vendors/:id {fields}; POST /api/v1/hours {hours, note}; POST /mcp (JSON-RPC MCP).',
   widget: '<div data-real-clicks data-niche="gpu"></div><script src="https://real.clicks.pit.world/w.js" defer></script>',
 };
 
@@ -183,6 +183,8 @@ export function createApp({ db, service, env = process.env }) {
           db.addHours(Number(b.hours) || 0, b.note);
           return json(res, 201, { ok: true });
         }
+        m = /^\/api\/v1\/leads\/([\w-]+)\/approve$/.exec(p);
+        if (m && req.method === 'POST') return json(res, 200, await service.approve(m[1], (await parsed(req)).note));
         m = /^\/api\/v1\/leads\/([\w-]+)\/refund$/.exec(p);
         if (m && req.method === 'POST') return json(res, 200, service.refund(m[1], (await parsed(req)).reason, 'admin'));
         m = /^\/api\/v1\/vendors\/([\w-]+)$/.exec(p);

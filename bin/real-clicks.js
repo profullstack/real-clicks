@@ -2,6 +2,7 @@
 // real-clicks CLI: the same admin surface as the API and MCP.
 //   REAL_CLICKS_KEY=<admin key> real-clicks stats | gates | leads | vendors | sends
 //   real-clicks refund <lead_id> "<reason>"     flat $50 credit back
+//   real-clicks approve <lead_id> [note]     deliver a held lead after a manual check
 //   real-clicks topup <vendor_id> [usd]         CoinPay checkout link
 //   real-clicks vendor <id> key=value ...       update (or create with name,email,niche)
 //   real-clicks hours <h> "<note>"              founder hours log
@@ -50,6 +51,7 @@ try {
     case 'sends': out(await api('/api/v1/sends')); break;
     case 'offer': out(await api(`/api/v1/offer?niche=${args[0] || 'gpu'}`)); break;
     case 'refund': out(await api(`/api/v1/leads/${args[0]}/refund`, 'POST', { reason: args.slice(1).join(' ') })); break;
+    case 'approve': out(await api(`/api/v1/leads/${args[0]}/approve`, 'POST', { note: args.slice(1).join(' ') })); break;
     case 'hours': out(await api('/api/v1/hours', 'POST', { hours: Number(args[0]), note: args.slice(1).join(' ') })); break;
     case 'vendor': out(await api(`/api/v1/vendors/${args[0]}`, 'POST', Object.fromEntries(args.slice(1).map((a) => a.split(/=(.*)/s).slice(0, 2))))); break;
     case 'topup': {
@@ -86,7 +88,7 @@ try {
       break;
     }
     default:
-      console.log(`real-clicks <stats|gates|leads|vendors|sends|offer|refund|hours|vendor|topup|tui|mcp>\n  env REAL_CLICKS_URL (default ${BASE}), REAL_CLICKS_KEY (admin key)`);
+      console.log(`real-clicks <stats|gates|leads|vendors|sends|offer|refund|approve|hours|vendor|topup|tui|mcp>\n  env REAL_CLICKS_URL (default ${BASE}), REAL_CLICKS_KEY (admin key)`);
   }
 } catch (e) {
   console.error(`real-clicks: ${e.message}`);

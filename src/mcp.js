@@ -6,6 +6,7 @@ export const TOOLS = [
   { name: 'list_leads', description: 'Recent leads (newest first).', inputSchema: { type: 'object', properties: { limit: { type: 'number' } } } },
   { name: 'list_vendors', description: 'Vendors with balance and status.', inputSchema: { type: 'object', properties: {} } },
   { name: 'refund_lead', description: 'Flat refund: credit $50 back for an invalid lead, reason logged.', inputSchema: { type: 'object', properties: { lead_id: { type: 'string' }, reason: { type: 'string' } }, required: ['lead_id', 'reason'] } },
+  { name: 'approve_lead', description: 'Deliver a verified lead the automatic checks held back, after a manual check.', inputSchema: { type: 'object', properties: { lead_id: { type: 'string' }, note: { type: 'string' } }, required: ['lead_id'] } },
   { name: 'topup_link', description: 'A CoinPay checkout link for a vendor prepaid balance.', inputSchema: { type: 'object', properties: { vendor_id: { type: 'string' }, amount_usd: { type: 'number' } }, required: ['vendor_id'] } },
   { name: 'set_vendor', description: 'Update a vendor (status offered|active|paused|waitlist, committed 0|1, email, note).', inputSchema: { type: 'object', properties: { vendor_id: { type: 'string' }, fields: { type: 'object' } }, required: ['vendor_id', 'fields'] } },
   { name: 'log_hours', description: 'Log founder hours spent on vendor handling.', inputSchema: { type: 'object', properties: { hours: { type: 'number' }, note: { type: 'string' } }, required: ['hours'] } },
@@ -20,6 +21,7 @@ export function createMcpHandler({ service, db, isAdmin }) {
       case 'list_leads': return db.leads(Number(a.limit) || 50);
       case 'list_vendors': return db.vendors();
       case 'refund_lead': return service.refund(a.lead_id, a.reason, 'mcp');
+      case 'approve_lead': return service.approve(a.lead_id, a.note);
       case 'topup_link': return { url: await service.topupUrl(a.vendor_id, a.amount_usd || 250) };
       case 'set_vendor': return db.setVendor(a.vendor_id, a.fields || {});
       case 'log_hours': db.addHours(Number(a.hours) || 0, a.note); return { ok: true };
