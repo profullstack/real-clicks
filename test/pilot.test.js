@@ -74,10 +74,14 @@ test('bots and bad sources are never delivered', async () => {
   clock.t += 20_000;
   const listed = await service.createLead(good(o, { email: 'x@ok.test' }), { ip: '6.6.6.6' });
   assert.match(db.lead(listed.lead_id).reject_reason, /ThreatCrush/);
+  assert.equal((await service.verifyLead(listed.lead_id, codeOf(sent.at(-1)))).status, 'held');
+  assert.equal((await service.approve(listed.lead_id, 'checked by hand')).status, 'delivered');
+  db.setLead(listed.lead_id, { status: 'delivered_test' });
   o = service.offer('gpu');
   clock.t += 20_000;
   await assert.rejects(service.createLead(good(o, { token: o.token.replace(/.$/, 'x') }), { ip: '1.1.1.3' }), /expired/);
   assert.equal(service.stats().delivered, 0);
+  await assert.rejects(service.approve(hp.lead_id), /only held/);
 });
 
 test('http: offer CORS, admin gate, widget served', async () => {

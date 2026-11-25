@@ -180,6 +180,17 @@ export function createService({ db, env = process.env, mailer = null, fetchImpl 
     return { status: 'delivered', vendor: vendor.name, message: `Thanks, your request went to ${vendor.name}. They will contact you about a quote.` };
   }
 
+  /** Manual check passed: deliver a verified lead the automatic checks held back. */
+  async function approve(leadId, note = '') {
+    const lead = db.lead(leadId);
+    if (!lead) throw new HttpError(404, 'lead not found');
+    if (lead.status !== 'unqualified') throw new HttpError(409, `lead is ${lead.status}, only held (unqualified) leads can be approved`);
+    db.setLead(lead.id, { qualified: 1, reject_reason: `${lead.reject_reason ?? ''} [approved: ${clip(note, 200) || 'manual check'}]` });
+    if (!db.moveLead(lead.id, 'unqualified', 'verified')) throw new HttpError(409, 'lead changed meanwhile');
+    db.event('approve', { lead: lead.id, note });
+    return deliver(lead.id);
+  }
+
   /** Flat refund: an invalid lead is credited back $50 if it was paid; free samples are just marked invalid. */
   function refund(leadId, reason, actor) {
     const lead = db.lead(leadId);
@@ -315,5 +326,5 @@ export function createService({ db, env = process.env, mailer = null, fetchImpl 
     return { date: new Date(now()).toISOString().slice(0, 10), pass, verdict: pass ? 'continue B' : 'kill B, ship C (affiliates) + D (marketing)', checks };
   }
 
-  return { offer, createLead, verifyLead, deliver, refund, refundTokenOk, topupUrl, coinpayWebhook, signupVendor, stats, gates, send, canDeliver };
+  return { offer, createLead, verifyLead, deliver, approve, refund, refundTokenOk, topupUrl, coinpayWebhook, signupVendor, stats, gates, send, canDeliver };
 }

@@ -2,6 +2,7 @@
 Description=real.clicks lead pilot (real.clicks.pit.world)
 After=network-online.target
 Wants=network-online.target
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
@@ -18,7 +19,6 @@ Environment=NODE_NO_WARNINGS=1
 ExecStart=/home/anthony/.local/share/mise/installs/node/24/bin/node src/server.js
 Restart=always
 RestartSec=3
-StartLimitIntervalSec=0
 NoNewPrivileges=true
 PrivateTmp=true
 MemoryMax=256M
