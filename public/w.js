@@ -1,9 +1,11 @@
 /* real.clicks quote form. <div data-real-clicks data-niche="gpu|security"></div>
    <script src="https://real.clicks.pit.world/w.js" defer></script>
+   SPAs: call window.RealClicks.scan() after adding a container.
    CSP-friendly: no eval, no inline script or style; needs script-src, style-src and
    connect-src https://real.clicks.pit.world on the host page. */
 (function () {
   var BASE = 'https://real.clicks.pit.world';
+  function scan() {
   var nodes = document.querySelectorAll('[data-real-clicks]:not([data-rc-ready])');
   if (!nodes.length) return;
   if (!document.querySelector('link[data-rc-css]')) {
@@ -93,4 +95,9 @@
       });
     }).catch(function () {});
   });
+  }
+  // Single-page apps call window.RealClicks.scan() after rendering a new form container.
+  window.RealClicks = { scan: scan };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scan);
+  else scan();
 })();
