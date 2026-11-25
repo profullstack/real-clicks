@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>real.clicks: verified buyer leads from Active users</title>
+<meta name="description" content="A 14-day pilot: verified quote requests from GPU, server and security buyers on Profullstack sites. One named vendor per lead, fixed price, invalid leads refunded. Paid with CoinPay.">
+<link rel="canonical" href="https://real.clicks.pit.world/">
+<meta property="og:title" content="real.clicks: verified buyer leads, not bot clicks">
+<meta property="og:description" content="579k monthly visitors, 424k of them from two sites that look like bot swarms. So we only sell Active users.">
+<meta name="theme-color" content="#070806">
+<style>
+:root{--bg:#070806;--fg:#edf2e4;--dim:#9aa58c;--acc:#a6ff1a;--line:#1d2318;--card:#0e110b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--acc)}
+main{max-width:980px;margin:0 auto;padding:56px 22px 40px}
+.k{font:700 13px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.04;letter-spacing:-.02em;margin:.3em 0 .35em}
+h2{font-size:clamp(24px,3.4vw,34px);line-height:1.15;margin:0 0 .5em}
+p.lead{font-size:20px;color:var(--dim);max-width:46em}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat{font:800 44px/1 system-ui,sans-serif;color:var(--acc);font-variant-numeric:tabular-nums}
+.card p{margin:.5em 0 0;color:var(--dim);font-size:15px}
+.cta{display:inline-block;background:var(--acc);color:#081000;font-weight:800;padding:14px 22px;border-radius:10px;text-decoration:none;margin:8px 10px 0 0}
+.cta.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:600}
+td.n{text-align:right}
+video{width:100%;max-width:360px;border-radius:14px;border:1px solid var(--line);background:#000}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:28px;align-items:start}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+ol li,ul li{margin:.35em 0}
+.note{font-size:14px;color:var(--dim)}
+.site-footer{max-width:980px;margin:0 auto;padding:24px 22px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+<div class="k">real.clicks · a Profullstack experiment</div>
+<h1>Verified buyer leads.<br>Not bot clicks.</h1>
+<p class="lead">A 14-day pilot for <strong>GPU and server rental</strong> and <strong>pentest and security</strong> vendors. People on our compute and security sites ask for a quote, and the request goes to one named vendor. You pay a fixed price per verified lead, and invalid leads are refunded.</p>
+<p><strong>Owner restarted the pilot on 25 Nov despite the day-0 data.</strong> The day-0 check said the pages were mostly crawlers (r4ck.dev: 3,207 human visitors in 14 days; threatcrush.com: 320). Anthony decided to run the test anyway and let the day-14 gates decide. Review date: <strong>9 Dec 2026</strong>.</p>
+<a class="cta" href="/vendors">Vendors: get verified leads ($50 each)</a> <a class="cta alt" href="#board">See the board meeting</a>
+
+<section>
+<div class="k">Why this exists</div>
+<h2>We ran the numbers on our own traffic first.</h2>
+<div class="grid">
+  <div class="card"><div class="stat">579k</div><p>visitors on the fleet in the last 30 days that our tracker did not classify as crawlers.</p></div>
+  <div class="card"><div class="stat">424k</div><p>of them came from two sites (an open-data index and a feed directory) whose pattern looks like bot swarms: one page each, no referrer.</p></div>
+  <div class="card"><div class="stat">156k</div><p>human visitors on the other sites, with 222k page views.</p></div>
+  <div class="card"><div class="stat">50k</div><p>events from outside our network: 33k from search, 12k from social, 4k from AI assistants.</p></div>
+</div>
+<p class="note">Source: crawlproof tracker, 30 days to 2026-11-25. Visitors are distinct browser ids per site per day.</p>
+<p>A 2003-style traffic broker would sell all 579k. In 2026 most of that is software, and reselling it is ad fraud, whatever you call it. So our board voted against a traffic exchange and for the opposite: sell only the people who ask for something, and prove they are real.</p>
+</section>
+
+<section>
+<div class="k">How the pilot works</div>
+<h2>One quote form, one vendor, one price.</h2>
+<ol>
+  <li>A "get a quote" form sits on the GPU and server pages of r4ck.dev and on the pricing and features pages of threatcrush.com. (Not on c0mpute.com: it sells GPU time itself.)</li>
+  <li>Each request is email-verified and scored against ThreatCrush reputation data. The visitor has to be an <strong>Active user</strong>: real typing and pointer use on the form, at least 5 seconds on it, an empty honeypot, and a browser that doesn't report automation.</li>
+  <li>The consent line names the one vendor who gets the lead. We never resell it or share it with a list.</li>
+  <li>Vendors prepay a balance with CoinPay (crypto or PayPal): <strong>$50 per verified lead</strong>, flat. The first 2 leads are free samples. No contract, stop anytime. If a lead is invalid, one click puts the $50 back.</li>
+  <li>At most 5 vendors. Leads route by email automatically, no human in the loop.</li>
+  <li>Day 14 (9 Dec): if there are fewer than 10 qualified requests, fewer than 2 paying or committed vendors, or more than about 3 founder hours a week on vendors, we kill it, ship affiliate links plus marketing instead, and say so here.</li>
+</ol>
+</section>
+
+<section>
+<div class="k">Where the real people are</div>
+<h2>Where the engaged readers are</h2>
+<table>
+<thead><tr><th>Site</th><th>Topic</th><th class="n">Human visitors / 30d</th><th class="n">2+ pages in a day</th></tr></thead>
+<tbody>
+<tr><td>tipoffwatch.com</td><td>tips and leads</td><td class="n">13,586</td><td class="n">4,641</td></tr>
+<tr><td>bittorrented.com</td><td>media</td><td class="n">4,397</td><td class="n">1,245</td></tr>
+<tr><td>c0mpute.com</td><td>GPU and compute</td><td class="n">3,843</td><td class="n">953</td></tr>
+<tr><td>genrewatch.com</td><td>music</td><td class="n">8,000</td><td class="n">929</td></tr>
+<tr><td>saasrow.com</td><td>SaaS directory</td><td class="n">5,652</td><td class="n">766</td></tr>
+<tr><td>ugig.net</td><td>freelance gigs</td><td class="n">6,822</td><td class="n">504</td></tr>
+<tr><td>r4ck.dev</td><td>server and GPU offers</td><td class="n">6,754</td><td class="n">479</td></tr>
+<tr><td>pwamart.com</td><td>web apps</td><td class="n">9,002</td><td class="n">419</td></tr>
+</tbody>
+</table>
+<p class="note">"2+ pages in a day" is the strict proxy we had before the Active users metric shipped. Live Active user counts per site will replace it here.</p>
+</section>
+
+<!--DAY14-->
+<section id="vendors">
+<div class="k">For vendors</div>
+<h2>Sell GPU, servers or pentests? Get the requests.</h2>
+<p>Honest numbers: in the 14 days to 25 Nov, r4ck.dev had 3,207 human visitors (and 158,739 crawler visitors we will never bill you for), and threatcrush.com had 320 human visitors. That is small. You only pay for a request a real person typed, verified with an emailed code, that names you and only you.</p>
+<a class="cta" href="/vendors">Sign up and top up with CoinPay</a>
+</section>
+
+<section id="board">
+<div class="k">Decided in public</div>
+<h2>Our AI board met on this.</h2>
+<div class="two">
+<div>
+<p><strong>Day 0 result (25 Nov 2026): the gate said stop.</strong> The owner restarted the pilot the same day anyway; the numbers below are why we expect it to be hard.</p><p> The board's own rule was to check the r4ck and ThreatCrush pages first and stop if they were mostly crawlers. They were.</p>
+<table>
+<thead><tr><th>Site, last 14 days</th><th class="n">Crawler visitors</th><th class="n">Human visitors</th><th class="n">Active users today</th></tr></thead>
+<tbody>
+<tr><td>r4ck.dev</td><td class="n">158,739</td><td class="n">3,207</td><td class="n">0 of 184</td></tr>
+<tr><td>threatcrush.com</td><td class="n">101</td><td class="n">320</td><td class="n">0 of 29</td></tr>
+</tbody>
+</table>
+<p>Together those pages were 98% crawlers. ThreatCrush has real people but far too few to produce 10 quote requests in 14 days. At first no quote forms went up and no vendor was offered a lead. Then the owner restarted the pilot: the forms and vendor offers went out on 25 Nov, and day 14 decides. Option A, a traffic exchange, is never on the table.</p>
+<hr style="border:0;border-top:1px solid #1d2318;margin:28px 0">
+<p><strong>Verdict, 3 to 2: run a 14-day lead test, not a traffic exchange.</strong> All five AI advisors rejected buying and selling raw traffic. The CFO, Growth Marketer and Contrarian Investor backed a vertical lead pilot with affiliate links alongside it. The Operator and Founder-Time Strategist wanted affiliate links first. The Contrarian was the only one to change their mind, moving from links to leads.</p>
+<table>
+<thead><tr><th>Member</th><th>Final call</th></tr></thead>
+<tbody>
+<tr><td>CFO</td><td>Lead pilot (B), with affiliate links as a price floor</td></tr>
+<tr><td>Growth Marketer</td><td>Lead pilot (B), pre-sell 3 to 5 vendors</td></tr>
+<tr><td>Contrarian Investor</td><td>Lead pilot (B); changed from affiliate links (C)</td></tr>
+<tr><td>Operator</td><td>Affiliate links and a quote form first (C)</td></tr>
+<tr><td>Founder-Time Strategist</td><td>Affiliate links and a quote form first (C)</td></tr>
+</tbody>
+</table>
+<p><strong>Strongest dissent, from the Operator:</strong> &ldquo;Pre-selling leads to 3 to 5 vendors, verifying submissions and refunding invalid leads have never been done here even once.&rdquo; Selling to vendors is sales work, and the brief said everything should be automated.</p>
+<p><strong>Kill gates on day 14:</strong> fewer than 10 qualified requests, fewer than 2 paying vendors, or more than about 3 founder hours a week. Any one of them and we stop and fall back to affiliate links.</p>
+<p><a href="https://board.saas.pit.world/m/Ij0wyfNFxJgAv-QooS-cBUD9">Read the full minutes and play the 24-minute recording</a></p>
+<p class="note">Board as a Service runs on Claude Opus 5.5. The advisors are AI models, not real directors.</p>
+
+</div>
+<div>
+<video src="short.mp4" controls playsinline preload="metadata" poster="poster.png"></video>
+</div>
+</div>
+</section>
+
+<section>
+<div class="k">For publishers</div>
+<h2>Run a site with real readers?</h2>
+<p>If the pilot works, other publishers can add the same quote form and the crawlproof tracker, and earn a share of every verified lead their readers send. Get in touch if you want to be next.</p>
+<a class="cta alt" href="mailto:riotcoder@profullstack.com?subject=real.clicks%20publisher">Join as a publisher</a>
+</section>
+
+<section>
+<div class="k">Rules we hold ourselves to</div>
+<ul>
+  <li>We never sell bot traffic, incentivised clicks, popunders or redirect chains.</li>
+  <li>Every bill shows the counts per site, and every count comes from the same tracker the publisher sees.</li>
+  <li>A lead from a visitor who was never an Active user is never billed.</li>
+</ul>
+</section>
+</main>
+<div class="site-footer"><p><strong>real.clicks</strong> is a Profullstack experiment in honest traffic brokering. The board members quoted here are AI advisors, not real directors. Nothing here is investment advice.</p></div>
+<footer class="pfs-footer" data-pfs-footer="0.7.1"><style>.pfs-footer{--pfs-footer-muted:color-mix(in srgb,currentColor 62%,transparent);--pfs-footer-gap:.5rem 1.25rem;--pfs-footer-size:.875rem;border-top:1px solid color-mix(in srgb,currentColor 14%,transparent);font-size:var(--pfs-footer-size);line-height:1.5;color:inherit}html:has([data-pfs-footer]) [data-pit-footer],html:has([data-profullstack-footer]) [data-pit-footer],html:has([data-pfs-footer]) [data-net-footer],html:has([data-profullstack-footer]) [data-net-footer],html:has([data-pfs-footer]) footer:not([data-pfs-footer]):not([data-profullstack-footer]),html:has([data-profullstack-footer]) footer:not([data-pfs-footer]):not([data-profullstack-footer]){display:none!important}.pfs-footer__inner{max-width:72rem;margin:0 auto;padding:.85rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;text-align:center}.pfs-footer a{color:var(--pfs-footer-muted);text-decoration:none}.pfs-footer a:hover,.pfs-footer a:focus-visible{color:inherit;text-decoration:underline}.pfs-footer__links{display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem 1rem}.pfs-footer__ring{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem}.pfs-footer__badges{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem}.pfs-footer__badges:has(.pfs-footer__badge--publisher:not(.pfs-footer__badge--default)[href*="pwamart.com"]) .pfs-footer__badge--default[href^="https://pwamart.com/"],.pfs-footer__badges:has(.pfs-footer__badge--publisher:not(.pfs-footer__badge--default)[href*="built.indie"]) .pfs-footer__badge--default[href^="https://built.indie.pit.world/"]{display:none!important}.pfs-footer a.pfs-footer__badge{display:inline-block;line-height:0}.pfs-footer__badge img{display:block;width:200px;height:44px;max-width:100%}.pfs-footer__badge--site img{width:auto;height:auto}.pfs-footer__badge--publisher img{width:32px;height:32px;max-width:none;object-fit:contain}.pfs-footer__badge--square img{width:32px;height:32px;max-width:none;object-fit:contain}.pfs-footer__badge--c0mpute img{width:136px;height:auto;aspect-ratio:170/36;max-width:none;opacity:.85}.pfs-footer__badge--c0mpute:hover img,.pfs-footer__badge--c0mpute:focus-visible img{opacity:1}.pfs-footer__news{display:flex;justify-content:center}.pfs-footer__sub{display:flex;align-items:center;gap:.35rem;margin:0;flex-wrap:wrap;justify-content:center}.pfs-footer__sub label{font:inherit;font-size:.8125rem;color:var(--pfs-footer-muted)}.pfs-footer__sub input[type=email]{box-sizing:border-box;appearance:none;font:inherit;font-size:.875rem;line-height:1.4;color:inherit;background:color-mix(in srgb,currentColor 8%,transparent);width:13.5rem;max-width:62vw;padding:.4rem .65rem;border:0;border-radius:.35rem}.pfs-footer__sub input[type=email]:hover{background:color-mix(in srgb,currentColor 11%,transparent)}.pfs-footer__sub input[type=email]::placeholder{color:var(--pfs-footer-muted);opacity:1}.pfs-footer__sub input[type=email]:focus-visible{outline:2px solid color-mix(in srgb,currentColor 58%,transparent);outline-offset:2px}.pfs-footer__sub button{font:inherit;font-size:.8125rem;color:var(--pfs-footer-muted);background:transparent;padding:.2rem .6rem;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:.35rem;cursor:pointer}.pfs-footer__sub button:hover,.pfs-footer__sub button:focus-visible{color:inherit}.pfs-footer__hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}.pfs-footer__sub+.pfs-footer__sublink{display:none}.pfs-footer__msg{flex-basis:100%;text-align:center;font-size:.8125rem;color:var(--pfs-footer-muted)}.pfs-footer__msg:empty{display:none}.pfs-footer__msg[data-state=ok]{color:inherit}.pfs-footer__msg[data-state=error]{color:#d92d20;color:light-dark(#b42318,#f97066)}.pfs-footer__copy{margin:0;color:var(--pfs-footer-muted)}.pfs-footer__copy a{color:inherit}.pfs-footer__tagline{display:inline-block;white-space:nowrap}.pfs-footer__brand{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-inline:.35rem;padding:2px 4px;border-radius:3px;background:#202124;line-height:0}.pfs-footer__brand img{display:block;width:20px;height:11px;max-width:none}</style><div class="pfs-footer__inner"><nav class="pfs-footer__links" aria-label="Footer"><a href="https://pit.world/pro">Find a pro</a><a href="https://outreachgraph.com/calendar/chovy">Book a call</a><a href="https://profullstack.com/terms">Terms</a><a href="https://profullstack.com/privacy">Privacy</a><a href="https://profullstack.com/media">Media</a><a href="https://github.com/profullstack" rel="noopener noreferrer">GitHub</a><a href="https://discord.gg/U7dEXfBA3s" rel="noopener noreferrer">Discord</a><a href="https://x.com/profullstackinc" rel="noopener noreferrer">X</a><a href="https://luma.com/profullstack" rel="noopener noreferrer">Events</a><a href="https://luma.com/mergenlaunch" rel="noopener noreferrer">Register for Event</a><a href="https://pairux.com/@profullstack" rel="noopener noreferrer">PairUX</a><a href="https://pairux.com/@moshcoding" rel="noopener noreferrer">Moshcoding</a></nav><nav class="pfs-footer__links" aria-label="Profullstack products"><a href="https://profullstack.com/stack/build">Agentic site builder</a><a href="https://crawlproof.com/surveys">CrawlProof Surveys</a></nav><nav class="webring pfs-footer__ring" aria-label="Profullstack webring"><a href="https://rssamplifier.com/ring/profullstack/previous?from=https%3A%2F%2Freal.clicks.pit.world%2F" rel="prev" title="Previous site">&lt;&lt;</a><a href="https://rssamplifier.com/ring/profullstack">Profullstack</a><a href="https://rssamplifier.com/ring/profullstack/next?from=https%3A%2F%2Freal.clicks.pit.world%2F" rel="next" title="Next site">&gt;&gt;</a></nav><div class="pfs-footer__news"><form class="pfs-footer__sub" action="https://pit.world/subscribe" method="post"><input type="hidden" name="site" value="real.clicks.pit.world"><label for="pfs-footer-email">Email</label><input id="pfs-footer-email" type="email" name="email" required maxlength="254" autocomplete="email" placeholder="you@example.com" aria-label="Email address for the Profullstack newsletter"><input class="pfs-footer__hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit">Subscribe</button><span class="pfs-footer__msg" role="status" aria-live="polite"></span><script>(function wireSubscribe(form) {
+  if (!form || form.getAttribute('data-pfs-wired')) return;
+  form.setAttribute('data-pfs-wired', '1');
+  var msg = form.querySelector('.pfs-footer__msg');
+  var button = form.querySelector('button');
+  var reasons = {
+    invalid: "that doesn't look like an email address",
+    undeliverable: "that address's domain can't receive email",
+    failed: 'the confirmation email could not be sent, try again later',
+  };
+  function say(text, state) {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.setAttribute('data-state', state);
+  }
+  form.addEventListener('submit', function (event) {
+    if (typeof fetch !== 'function') return; // let the plain POST go
+    event.preventDefault();
+    var data = new FormData(form);
+    var email = String(data.get('email') || '').trim();
+    // The honeypot: a bot that fills it gets the normal answer and nothing is sent.
+    if (data.get('website')) return say('Email confirmation sent. Check your inbox.', 'ok');
+    if (button) button.disabled = true;
+    say('Sending…', 'busy');
+    fetch(new URL('/api/subscribe', form.action).href, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email, site: data.get('site') }),
+    })
+      .then(function (res) {
+        return res
+          .json()
+          .catch(function () {
+            return {};
+          })
+          .then(function (body) {
+            if (res.ok && body.ok) {
+              say('Email confirmation sent to ' + email + '. Check your inbox.', 'ok');
+              form.reset();
+            } else {
+              say('Failed: ' + (body.error || reasons[body.status] || 'the subscribe service answered ' + res.status), 'error');
+            }
+          });
+      })
+      .catch(function (err) {
+        say('Failed: could not reach the subscribe service (' + ((err && err.message) || err) + ')', 'error');
+      })
+      .then(function () {
+        if (button) button.disabled = false;
+      });
+  });
+})(document.currentScript.parentNode)</script></form><a class="pfs-footer__sublink" href="https://pit.world/subscribe?site=https://real.clicks.pit.world/">Newsletter</a></div><div class="pfs-footer__badges"><a class="pfs-footer__badge pfs-footer__badge--publisher pfs-footer__badge--default" href="https://built.indie.pit.world/for?site=https://real.clicks.pit.world/"><img src="https://built.indie.pit.world/favicon.svg" alt="Find this site on built.indie" width="32" height="32" loading="lazy"></a><a class="pfs-footer__badge pfs-footer__badge--publisher pfs-footer__badge--default" href="https://pwamart.com/for?site=https://real.clicks.pit.world/"><img src="https://pwamart.com/icon.svg" alt="Find this site on PwaMart" width="32" height="32" loading="lazy"></a><a class="pfs-footer__badge pfs-footer__badge--publisher pfs-footer__badge--default" href="https://saasrow.pwa.pit.world/for?site=https://real.clicks.pit.world/"><img src="https://saasrow.pwa.pit.world/icon-192.png" alt="Find this site on SaaSRow" width="32" height="32" loading="lazy"></a></div><p class="pfs-footer__copy"><a href="tel:+18885264640">Phone: +1-888-526-4640</a></p><p class="pfs-footer__copy">&copy; 2026 <a class="pfs-footer__brand" href="https://profullstack.com/" title="Profullstack, Inc."><img src="https://profullstack.com/assets/logo.svg" alt="" width="20" height="11" loading="lazy"></a> <a href="https://profullstack.com/">Profullstack, Inc.</a> <span class="pfs-footer__tagline">&middot; Active humans only, never bot volume</span></p></div></footer>
+<style>.pit-foot,.pit-foot-modal{all:initial;box-sizing:border-box;font:14px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#273321}
+.pit-foot *{box-sizing:border-box;font:inherit;color:inherit}
+.pit-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 16px;margin:16px auto 8px;padding:14px 18px;max-width:960px;text-align:center;background:#f4f8ee;border:1px solid #d1dac7;border-top:2px solid #4d8a00;border-radius:8px}
+.pit-foot b{font-weight:600;color:#172015}
+.pit-foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
+.pit-foot-links>a,.pit-foot-links>button{all:unset;cursor:pointer;color:#285800}
+.pit-foot-links>a:hover,.pit-foot-links>button:hover{text-decoration:underline}
+.pit-foot a:focus-visible,.pit-foot button:focus-visible{outline:2px solid #4d8a00;outline-offset:2px;border-radius:2px}
+.pit-foot-modal{position:fixed;inset:0;margin:auto;width:min(560px,calc(100vw - 32px));height:fit-content;max-height:calc(100vh - 32px);overflow:auto;padding:22px 24px 18px;border:0;border-radius:12px;background:#fff;color:#2a3324;font-size:14px;line-height:1.55;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.pit-foot-modal:not(:popover-open){display:none}
+.pit-foot-modal::backdrop{background:rgba(10,14,8,.45)}
+.pit-foot-modal h2{display:block;margin:0 0 10px;font-size:18px;font-weight:700}
+.pit-foot-modal p,.pit-foot-modal ol{display:block;margin:0 0 10px}.pit-foot-modal ol{padding-left:22px}.pit-foot-modal li{display:list-item;margin:4px 0}
+.pit-foot-modal b{font-weight:700}.pit-foot-modal a{color:#2f6b00;text-decoration:underline;cursor:pointer}
+.pit-foot-modal code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:#eef3e7;padding:.05em .3em;border-radius:4px;overflow-wrap:anywhere}
+.pit-foot-x{all:unset;position:absolute;top:8px;right:12px;font-size:22px;line-height:1;padding:4px 6px;cursor:pointer;color:#6b7563}
+@media (prefers-color-scheme:dark){.pit-foot{background:#151a11;border-color:#384330;border-top-color:#a6ff1a;color:#edf3e8}.pit-foot b{color:#fff}.pit-foot-links>a,.pit-foot-links>button{color:#c4ff6b}.pit-foot-modal{background:#151a11;color:#edf3e8}.pit-foot-modal a{color:#c4ff6b}.pit-foot-modal code{background:#222a1c}.pit-foot-x{color:#c4ff6b}}
+</style>
+<nav class="pit-foot" aria-label="The pit.world network" data-pit-footer>
+<span><b>real.clicks</b> is a Moshpit name on pit.world</span>
+<span class="pit-foot-links"><a href="https://pit.world/">Search</a><a href="https://pit.world/ring">Ring</a><a href="https://pit.moshcode.sh">Publish here</a><button type="button" popovertarget="pit-foot-howto">How do I use this?</button>
+<div id="pit-foot-howto" class="pit-foot-modal" popover role="dialog" aria-label="How to use real.clicks">
+<button type="button" class="pit-foot-x" popovertarget="pit-foot-howto" popovertargetaction="hide" aria-label="Close">&times;</button>
+<h2>How do I use this?</h2>
+<p>real.clicks lives on Moshpit, a namespace beside the old one where anyone can own an ending like <code>.clicks</code>. The pit.world copy, <a href="https://real.clicks.pit.world/">real.clicks.pit.world</a>, works in any browser with nothing to install. To open <code>https://real.clicks</code> directly, about two minutes:</p>
+<ol>
+<li>Turn on secure DNS in your browser (Chrome, Edge, Brave: Settings, Privacy and security, Use secure DNS, Custom. Firefox: Settings, Privacy &amp; Security, DNS over HTTPS) and enter <code>https://dns.moshcode.sh/dns-query</code>.</li>
+<li>Install the Moshpit certificate so the padlock shows: <a href="https://pit.world/moshpit-root-ca.crt">moshpit-root-ca.crt</a>.</li>
+<li>Open <code>https://real.clicks</code>.</li>
+</ol>
+<p>Every device, and how to undo it: <a href="https://pit.world/connect">pit.world/connect</a>. Or install moshcode: <code>curl -fsSL https://moshcode.sh/install.sh | sh</code></p>
+<p>real.clicks also has a <a href="https://bbs.real.clicks.pit.world/">board</a> and an AT Protocol <a href="https://social.real.clicks.pit.world/">social feed</a>. One <a href="https://pit.world/account">pit.world account</a> signs you in on both, and on every other name's.</p>
+<p><b>Publish here:</b> <a href="https://pit.moshcode.sh">claim your own name</a> and it opens at <code>yourname.ending.pit.world</code> too, or <a href="https://pit.world/build">have us build the app</a>.</p>
+</div></span>
+</nav>
+
+</body>
+</html>

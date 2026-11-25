@@ -1,0 +1,27 @@
+[Unit]
+Description=real.clicks lead pilot (real.clicks.pit.world)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=anthony
+Group=anthony
+WorkingDirectory=/home/anthony/www/real-clicks-app
+# A synced copy of the logicsrc vault profullstack/real-clicks--prod (vault is the master).
+EnvironmentFile=/home/anthony/.local/share/real-clicks/app.env
+Environment=NODE_ENV=production
+Environment=PORT=8829
+Environment=HOST=127.0.0.1
+Environment=REAL_CLICKS_DB=/home/anthony/.local/share/real-clicks/real-clicks.db
+Environment=NODE_NO_WARNINGS=1
+ExecStart=/home/anthony/.local/share/mise/installs/node/24/bin/node src/server.js
+Restart=always
+RestartSec=3
+StartLimitIntervalSec=0
+NoNewPrivileges=true
+PrivateTmp=true
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+{
+  "name": "@profullstack/real-clicks",
+  "version": "0.1.0",
+  "description": "real.clicks: verified buyer leads for GPU, server and security vendors. One named vendor per lead, $50 flat, CoinPay prepaid, invalid leads refunded. Web, HTTP API, CLI, TUI and MCP.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://real.clicks.pit.world",
+  "repository": { "type": "git", "url": "git+https://github.com/profullstack/real-clicks.git" },
+  "bin": { "real-clicks": "bin/real-clicks.js" },
+  "files": ["bin", "README.md", "LICENSE"],
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js",
+    "day14": "node scripts/day14.mjs"
+  },
+  "dependencies": {
+    "@profullstack/coinpay-onboard": "^0.5.1",
+    "nodemailer": "^7.0.10"
+  }
+}

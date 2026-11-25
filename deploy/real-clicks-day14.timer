@@ -1,0 +1,9 @@
+[Unit]
+Description=real.clicks day-14 gate check on 2026-12-09
+
+[Timer]
+OnCalendar=2026-12-09 16:00:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target
