@@ -1,6 +1,6 @@
 {
   "name": "@profullstack/real-clicks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "real.clicks: verified buyer leads for GPU, server and security vendors. One named vendor per lead, $50 flat, CoinPay prepaid, invalid leads refunded. Web, HTTP API, CLI, TUI and MCP.",
   "license": "MIT",
   "type": "module",
